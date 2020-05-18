@@ -16,11 +16,19 @@ def welcome_msg(bot,update):
     chat_id = update.message.chat_id
     msg_str = "Welcome aboard !!"
     bot.send_message(chat_id=chat_id,text=msg_str)
+
+
+def end_msg(bot,update):
+    chat_id = update.message.chat_id
+    msg_str = "See you later...."
+    bot.send_message(chat_id=chat_id,text=msg_str)
+
 def main():
     updater = Updater('1061615492:AAHTgMfEOKuelx_Tq_XpkeTOt5AkdSvUw2A')
     dp = updater.dispatcher
     dp.add_handler(CommandHandler('bop',bop))
     dp.add_handler(CommandHandler('start',welcome_msg))
+    dp.add_handler(CommandHandler('bye',end_msg))
 
     updater.start_polling()
     updater.idle()
